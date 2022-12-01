@@ -9,4 +9,6 @@
 [Load Balancer and Firewall Setup](https://vimeo.com/775412708/4a219b37e7)
     
 At this point you should have both your droplets created(with ssh for regular users and root login blocked), and the load balancer and firewall connected to both of them. Your project home page should look something like this:
+
+![Digital Ocean Homepage with Load Balancer Connected](/images/do_homepage.png "DO Homepage")
 </p>

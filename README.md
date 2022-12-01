@@ -28,9 +28,37 @@ sudo chown root:root /usr/bin/caddy
 Once you have this you are ready to start creating your web app.
 
 ## Creating the Web App
-On your local machine (for me I'm on windows, so its wsl) create a new directory to hold your web app. I'm naming mine **2420-assign-2**, you can make yours more personalized to you.
+On your local machine (for me I'm on windows, so its **WSL**) create a new directory to hold your web app. I'm naming mine **2420-assign-2**, you can make yours more personalized to you.
+
 Inside of this directory create two more directories named **html** and **src**.
+
 Inside of the html directory create an **index.html** page
+
 Inside of your index.html create a simple but complete html document, it should look something like this: 
 
 ![index.html](/images/index_html_template.png "index.html")
+
+### Installing Volta
+We will be using Volta to install node onto our local machine.
+
+Run these commands to install node using volta:
+```
+# install Volta
+curl https://get.volta.sh | bash
+
+# install Node
+volta install node
+
+# start using Node
+node
+
+```
+### Installing Fastify for your NodeJS server
+
+Inside of your src directory create a new node project.
+
+To initialize it you will need to run these commands:
+
+`npm init`
+
+`npm i fastify` to install fastify

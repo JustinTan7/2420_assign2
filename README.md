@@ -2,7 +2,7 @@
 
 ## Setting up droplets, load balancer, and firewalls
 <p>
-    For the purpose of this assignment you will need to create two droplets and connect a load balancer to both of them, as well as a firewall. The setting up of the droplets, load balancer, and firewall won't be covered here bceause it is extensively covered in these videos:
+    For the purpose of this assignment you will need to create two droplets and connect a load balancer to both of them, as well as a firewall. The setting up of the droplets, load balancer, and firewall won't be covered here because it is extensively covered in these videos:
     
 [Digital Ocean Droplet Setup](https://vimeo.com/758870226/f75da348fc?embedded=true&source=vimeo_logo&owner=17609105)
     

@@ -53,6 +53,9 @@ volta install node
 node
 
 ```
+
+Next you can either restart your droplets or run the command `source ~/.bashr` to restart the service without restarting your droplet
+
 ### Installing Fastify for your NodeJS server
 
 Inside of your src directory create a new node project.
@@ -62,3 +65,45 @@ To initialize it you will need to run these commands:
 `npm init`
 
 `npm i fastify` to install fastify
+
+Inside your src directory create an index.js file and add in the fastify hello world example
+
+The file should look like this: 
+
+![index.js](/images/indexjs.png "index.js")
+
+Now just test it locally, to do so within your local machine make sure you `cd` the src directory
+
+Run the command `node index.js`, follow the link it gives gives mine is 127.0.0.1:5050
+
+It should open a tab on your browser and display `hello: "Server X"`
+
+At this point you can transfer your index.js file within your src and index.html inside your html directory to your droplets, you will need to put the index.html in `/var/www/html`
+You will have to create the /www/html directories on your droplets
+
+The index.js can go anywhere, I chose to create an src directory in my home and then put the index.js in there.
+
+To transfer these files we will be using sftp, you will have to cd into the directory where the file lives and then run this command:
+`sftp -i ~/.ssh/[key name] [droplet name]@[ip address]`
+
+then you run: `put [file name]`, both these files should now be in both of your droplets in your home directory.
+
+From there you move the files into the specified directories you made prior to moving the files.
+
+At this point you should have:
+
+index.html in /var/www/html
+
+index.js in home/user/src
+
+## Creating the Caddyfile and Caddy service file
+
+Now you can create the Caddyfile and Caddy service file
+
+Were going to start with writing the Caddyfile, on your local machine create the file. Nanme it **Caddyfile**
+
+It should look like this:
+
+![Caddyfile](/images/Caddyfile.png "Caddyfile")
+
+The ip in the first line should be the one for your load balancer

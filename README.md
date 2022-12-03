@@ -102,7 +102,7 @@ In your src directories on both your droplet you will also need to run `npm init
 
 Now you can create the Caddyfile and Caddy service file
 
-Were going to start with writing the Caddyfile, on your local machine create the file. Nanme it **Caddyfile**
+We're going to start with writing the Caddyfile, on your local machine create the file. Name it **Caddyfile**
 
 It should look like this:
 

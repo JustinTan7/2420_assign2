@@ -107,3 +107,41 @@ It should look like this:
 ![Caddyfile](/images/Caddyfile.png "Caddyfile")
 
 The ip in the first line should be the one for your load balancer
+
+To start the caddy server you can either run the command `sudo caddy run -- config /etc/caddy/Caddyfile`
+
+or you can create a service file so that you aren't running this command all of the time, I am going to create the service file.
+
+Create the service file on your local machine, it should look like this:
+
+![caddy service file](/images/caddy_service.png "caddy.service")
+
+Now that you have both the Caddyfile and caddy.service created you can move them to your droplets, again I will be using sftp to do so.
+
+Once you have moved them to both to your droplets you can move them to the system directory with:
+
+`sudo cp /home/user/caddy.service /etc/systemd/system`
+
+## Creating the service file for the node project
+
+Now we are going to write the service file to start the web app, within WSL you are going to create the file, it should look like this:
+
+![web service file](/images/hello_web_service.png "hello_web.service")
+
+## Running and testing the services
+
+Now with everything in the correct place you can begin to start the services and test your web app.
+
+First start with the caddy.service file, run these commands to start the service and enable it on startup:
+
+```
+sudo systemctl start caddy.service
+sudo systemctl enable caddy.service
+sudo systemctl status caddy.service
+
+```
+The last command will check the status of the service file, it should look like this:
+
+![caddy service status](/images/caddy_service_status.png "caddy service status")
+
+

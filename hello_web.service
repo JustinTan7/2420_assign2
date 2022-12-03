@@ -1,0 +1,13 @@
+[Unit]
+Description=service to start node web app and restart it if fails
+After=network-online.target
+
+[Service]
+User=biggie
+Group=biggie
+Type=notify
+ExecStart=/home/biggie/.volta/bin/node /home/biggie/src/index.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

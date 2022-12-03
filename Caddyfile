@@ -1,4 +1,4 @@
-http://146.190.2.196/api {
+http://146.190.2.196/ {
         root * /var/www/html/
         reverse_proxy /api localhost:5050
         file_server

@@ -75,7 +75,7 @@ The file should look like this:
 
 Now just test it locally, to do so within your local machine make sure you `cd` the src directory
 
-Run the command `node index.js`, follow the link it gives gives mine is 127.0.0.1:5050
+Run the command `node index.js`, follow the link it gives, mine is 127.0.0.1:5050
 
 It should open a tab on your browser and display `hello: "Server X"`
 
@@ -102,7 +102,7 @@ In your src directories on both your droplet you will also need to run `npm init
 
 Now you can create the Caddyfile and Caddy service file
 
-Were going to start with writing the Caddyfile, on your local machine create the file. Nanme it **Caddyfile**
+We're going to start with writing the Caddyfile, on your local machine create the file. Name it **Caddyfile**
 
 It should look like this:
 

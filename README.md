@@ -120,9 +120,13 @@ Create the service file on your local machine, it should look like this:
 
 Now that you have both the Caddyfile and caddy.service created you can move them to your droplets, again I will be using sftp to do so.
 
-Once you have moved them to both to your droplets you can move them to the system directory with:
+Once you have moved them to both to your droplets you can move the service file to /etc/systemd/system with:
 
 `sudo cp /home/user/caddy.service /etc/systemd/system`
+
+and the Caddyfile to /etc/caddy with: 
+
+`sudo cp /home/user/Caddyfile /etc/caddy`
 
 ## Creating the service file for the node project
 

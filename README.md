@@ -39,12 +39,15 @@ Inside of your index.html create a simple but complete html document, it should 
 ![index.html](/images/index_html_template.png "index.html")
 
 ### Installing Volta
-We will be using Volta to install node onto our local machine.
+We will be using Volta to install node onto our local machine and your droplets.
 
 Run these commands to install node using volta:
 ```
 # install Volta
 curl https://get.volta.sh | bash
+
+# run this to be able to use the volta command in the next line
+source ~/.bashrc
 
 # install Node
 volta install node
@@ -53,8 +56,6 @@ volta install node
 node
 
 ```
-
-Next you can either restart your droplets or run the command `source ~/.bashr` to restart the service without restarting your droplet
 
 ### Installing Fastify for your NodeJS server
 
@@ -78,8 +79,7 @@ Run the command `node index.js`, follow the link it gives gives mine is 127.0.0.
 
 It should open a tab on your browser and display `hello: "Server X"`
 
-At this point you can transfer your index.js file within your src and index.html inside your html directory to your droplets, you will need to put the index.html in `/var/www/html`
-You will have to create the /www/html directories on your droplets
+At this point you can transfer your index.js file within your src and index.html inside your html directory to your droplets, you will need to put the index.html in `/var/www`
 
 The index.js can go anywhere, I chose to create an src directory in my home and then put the index.js in there.
 
@@ -95,6 +95,8 @@ At this point you should have:
 index.html in /var/www/html
 
 index.js in home/user/src
+
+In your src directories on both your droplet you will also need to run `npm init` and `npm i fastify`
 
 ## Creating the Caddyfile and Caddy service file
 
@@ -128,8 +130,11 @@ Now we are going to write the service file to start the web app, within WSL you 
 
 ![web service file](/images/hello_web_service.png "hello_web.service")
 
+Mine is called **hello_web.service**
+
 ## Running and testing the services
 
+### Running the services
 Now with everything in the correct place you can begin to start the services and test your web app.
 
 First start with the caddy.service file, run these commands to start the service and enable it on startup:
@@ -144,4 +149,37 @@ The last command will check the status of the service file, it should look like 
 
 ![caddy service status](/images/caddy_service_status.png "caddy service status")
 
+Now you can start and enable the hello_web.service file follow the same procedures as the caddy service but just replace the name with hello_web.service
+
+```
+sudo systemctl start hello_web.service
+sudo systemctl enable hello_web.sevice
+sudo systemctl status hello_web.service
+
+```
+The status command should return the same output as the caddy one above. 
+
+### Testing the services
+
+To test the load balancer, simply run the command: `curl [load balancer ip]`
+
+If everything works you should get an output of your index.html, for the purpose of the testing I changed the index.html in both droplets to verify that it is communicating with both servers
+
+My index.html on my ubuntu-01 looks like this:
+
+![ubuntu-01_html](/images/ubuntu-01_html.png "ubuntu-01_html")
+
+and my html on ubuntu-02 looks like this:
+
+![ubuntu-02_html](/images/ubuntu-02_html.png "ubuntu-02_html")
+
+You will notice the difference in the h2 tag.
+
+Finally you can test your load balancer/api, to do so run `curl [load balancer ip]/api`
+
+The output should look like this:
+
+![test_api](/images/test_api.png "test_api")
+
+If all the tests work, congratulations you are done!
 
